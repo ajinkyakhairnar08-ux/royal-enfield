@@ -1,0 +1,188 @@
+/* Base */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #000;
+  z-index: 1000;
+}
+.navbar-brand img {
+  height: 40px;
+  width: auto;
+}
+.nav-link {
+  color: white !important;
+  transition: color .25s ease;
+}
+.nav-link:hover {
+  color: #ff3c00 !important;
+  text-decoration: underline;
+}
+
+/* keep dropdown dark */
+.dropdown-menu {
+  background-color: #000 !important;
+}
+.dropdown-menu .dropdown-item {
+  color: #ff3c00;
+}
+
+/* Icon buttons */
+.navbar-icons .icon-btn,
+.icon-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.icon-btn:hover { color: #ff3c00; }
+
+/* Carousel (unchanged look) */
+.carousel-inner img {
+  width: 100%;
+  height: 89vh;
+  object-fit: cover;
+}
+.carousel-caption {
+  background: rgba(0,0,0,0.5);
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  color: #fff;
+}
+.carousel-caption button {
+  background-color: #000;
+  border: none;
+  color: #fff;
+  padding: .5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.carousel-caption button:hover { color: #ff3c00; }
+
+/* New arrivals */
+#bikestext {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+}
+.container .card {
+  border-radius: 10px;
+}
+.card-img-top {
+  height: 220px;
+  object-fit: cover;
+}
+.card.h-100 { box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+
+/* MotoCulture (kept look but responsive tweaks) */
+.motoculture {
+  background-color: #111;
+  color: #fff;
+  padding: 80px 40px;
+  overflow: hidden;
+}
+.section-title { font-size: 2rem; font-weight: 700; }
+
+/* scroll buttons */
+.scroll-buttons { display:flex; gap:10px; }
+.scroll-btn {
+  background: none;
+  border: 1px solid #444;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+.scroll-btn:hover { background: #ff3c00; border-color: #ff3c00; }
+
+/* motocard */
+.motoculture-slider {
+  display:flex;
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  gap:20px;
+}
+.motocard {
+  min-width: 400px;
+  background:#000;
+  border-radius:5px;
+  overflow:hidden;
+  transition: transform .25s ease;
+}
+.motocard:hover { transform: scale(1.05); }
+.motocard img { width:100%; height:250px; object-fit:cover; }
+.card-info { padding: 15px; border-top: 1px solid #444; }
+.card-info h3 { color:#ff3c00; margin:0; font-size:1.8rem; }
+.card-info h5 { margin-top:5px; font-weight:600; }
+
+/* Video overlay (kept look) */
+.carousel-item video { width:100%; height:100vh; object-fit:cover; }
+.video-overlay-text {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  text-align:center;
+  color:white;
+  z-index:2;
+}
+.video-overlay-text h1 { font-size:3rem; font-weight:700; text-shadow:2px 2px 10px rgba(0,0,0,.7); }
+.video-overlay-text p { font-size:1.2rem; margin-top:10px; text-shadow:1px 1px 6px rgba(0,0,0,.6); }
+.video-overlay-text .btn { margin-top:20px; padding:10px 25px; font-weight:600; background-color:#ff3c00; border:none; border-radius:30px; }
+.video-overlay-text .btn:hover { background-color:#ff5722; }
+
+/* Utilities fix */
+.container { max-width: 1200px; }
+
+/* ---------- RESPONSIVE FIXES ---------- */
+
+/* Tablets and smaller */
+@media (max-width: 992px) {
+  .carousel-inner img { height: 70vh; }       /* reduce hero height */
+  .card-img-top { height: 200px; }
+  .motocard { min-width: 320px; }
+  .video-overlay-text h1 { font-size:2.4rem; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .carousel-inner img { height: 55vh; }
+  .carousel-caption { padding: .6rem .9rem; font-size: .95rem; }
+  .carousel-caption button { padding: .4rem .7rem; font-size: .9rem; }
+  #bikestext { font-size: 2rem; margin-top:1.4rem; }
+  .card-img-top { height: 160px; }
+  .container { padding-left: 1rem; padding-right: 1rem; }
+  .motoculture { padding: 40px 20px; }
+  .motocard { min-width: 280px; }
+  .video-overlay-text h1 { font-size: 1.8rem; }
+  .video-overlay-text p { font-size: 0.95rem; }
+
+  /* keep navbar brand smaller & make toggler clearly visible on right */
+  .navbar-brand img { height: 36px; }
+  .navbar-toggler { border: 1px solid #333; }
+  .navbar .navbar-icons { display: none; } /* hide large-screen icons (we have mobile copy inside collapse) */
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .carousel-inner img { height: 45vh; }
+  .card-img-top { height: 130px; }
+  .video-overlay-text h1 { font-size: 1.4rem; }
+  .motocard img { height: 160px; }
+  .card-info h3 { font-size: 1.4rem; }
+}
+
+/* Hide default scrollbar in the horizontal sliders */
+.motoculture-slider::-webkit-scrollbar { display: none; }
+.motoculture-slider { -ms-overflow-style: none; scrollbar-width: none; }

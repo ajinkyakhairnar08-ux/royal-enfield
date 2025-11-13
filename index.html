@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Royal Enfield</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="favicon re.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img src="royal enfield logo.jpeg" alt="Royal Enfield logo">
+      </a>
+
+      <!-- collapse first so toggler appears to the right in DOM order -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#">About us</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Models</a></li>
+          <li class="nav-item"><a class="nav-link" href="#bikestext">New arrivals</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Join club</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Contact us</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Bike Service</a></li>
+              <li><a class="dropdown-item" href="#">Location</a></li>
+              <li><a class="dropdown-item" href="#">Customer Service</a></li>
+            </ul>
+          </li>
+
+          <!-- mobile-only copy of the icon controls so users can access them from the menu -->
+          <li class="nav-item d-lg-none mt-2">
+            <div class="d-flex gap-3 align-items-center">
+              <button class="icon-btn nav-mobile-btn" id="locationBtnMobile"><i class="bi bi-geo-alt"></i> <span class="small ms-1">Location</span></button>
+              <button class="icon-btn nav-mobile-btn" id="accountBtnMobile"><i class="bi bi-person"></i> <span class="small ms-1">Account</span></button>
+              <div class="dropdown">
+                <button class="btn btn-sm dropdown-toggle btn-dark" type="button" data-bs-toggle="dropdown">IN</button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="#">Global</a></li>
+                  <li><a class="dropdown-item" href="#">Asia Pacific</a></li>
+                  <li><a class="dropdown-item" href="#">Europe</a></li>
+                  <li><a class="dropdown-item" href="#">Americas</a></li>
+                  <li><a class="dropdown-item" href="#">Middle East & Africa</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- visible on lg+ (kept same visual) -->
+      <div class="navbar-icons d-none d-lg-flex align-items-center me-2">
+        <button class="icon-btn" id="locationBtn"><i class="bi bi-geo-alt"></i></button>
+        <button class="icon-btn" id="accountBtn"><i class="bi bi-person"></i></button>
+        <div class="dropdown">
+          <button class="icon-btn dropdown-toggle" type="button" data-bs-toggle="dropdown">IN</button>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
+            <li><a class="dropdown-item" href="#">Global</a></li>
+            <li><a class="dropdown-item" href="#">Asia Pacific</a></li>
+            <li><a class="dropdown-item" href="#">Europe</a></li>
+            <li><a class="dropdown-item" href="#">Americas</a></li>
+            <li><a class="dropdown-item" href="#">Middle East & Africa</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- toggler on the right side -->
+      <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Account Modal (unchanged visually) -->
+  <div class="modal fade" id="accountModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-light p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="m-0">Login or Signup</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <label>Enter your mobile number</label>
+        <div class="input-group mb-2">
+          <span class="input-group-text bg-dark text-light border-secondary">+91</span>
+          <input type="text" class="form-control bg-dark text-light border-secondary" placeholder="Enter mobile number">
+        </div>
+        <small class="text-secondary mb-3 d-block">A 6-digit OTP will be shared with your mobile number</small>
+        <button class="btn btn-secondary w-100">SEND OTP</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Location Modal (added ids for JS search/list) -->
+  <div class="modal fade" id="locationModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark text-light p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="m-0">Select Country</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="input-group mb-3">
+          <input id="searchCountry" type="text" class="form-control bg-dark text-light border-secondary" placeholder="Search Country">
+          <span class="input-group-text bg-dark text-light border-secondary"><i class="bi bi-search"></i></span>
+        </div>
+        <ul id="countryList" class="list-group"></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carousel (left exactly as you had it) -->
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://www.royalenfield.com/content/dam/royal-enfield/motorcycles/bullet-650/banners/bullet-650-new.webp" class="d-block w-100" alt="">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Experience The Royal Enfield</h5>
+          <button>EXPLORE</button>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="himalayan-mana-black-india-home.webp" class="d-block w-100" alt="">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>HIMALAYAN 450</h5>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="meteor-350.avif" class="d-block w-100" alt="">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>METEOR 350</h5>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="classic-650-new.avif" class="d-block w-100" alt="">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>CLASSIC 650</h5>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  <h1 id="bikestext">New arrivals</h1>
+
+  <div class="container my-4">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://www.otocapital.in/_next/image?url=https%3A%2F%2Fassets.otocapital.in%2Fproduction%2Fkaza-brown-royal-enfield-himalayan-450-right-image.png&w=1536&q=75" class="card-img-top" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Royal Enfield Himalayan 450</h5>
+            <p class="card-text">On-road Price Nashik ₹3,63,937</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://assets.otocapital.in/production/stencil-white-royal-enfield-shotgun-650-image.png" class="card-img-top" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Royal Enfield SHOTGUN 650</h5>
+            <p class="card-text">On-road Price Nashik ₹4,53,930</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://www.otocapital.in/_next/image?url=https%3A%2F%2Fassets.otocapital.in%2Fstaging%2Fce4c6806-2525-47a4-bcf3-81720b9c7f27.jpeg&w=1024&q=75" class="card-img-top" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Royal Enfield Classic 350 Std</h5>
+            <p class="card-text">On-road Price Nashik ₹1,91,283</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MotoCulture (left exactly as you had it) -->
+  <section class="motoculture">
+    <div class="container-fluid">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="section-title">MotoCulture</h2>
+        <div class="scroll-buttons">
+          <button id="scrollLeft" class="scroll-btn"><i class="bi bi-chevron-left"></i></button>
+          <button id="scrollRight" class="scroll-btn"><i class="bi bi-chevron-right"></i></button>
+        </div>
+      </div>
+
+      <div class="motoculture-slider" id="motocultureSlider">
+        <div class="motocard">
+          <img src="motosports.webp" alt="">
+          <div class="card-info">
+            <h3>01</h3>
+            <h5>Royal Enfield TV</h5>
+          </div>
+        </div>
+
+        <div class="motocard">
+          <img src="custom-world.webp" alt="">
+          <div class="card-info">
+            <h3>02</h3>
+            <h5>Custom world</h5>
+          </div>
+        </div>
+
+        <div class="motocard">
+          <img src="slide1.webp" alt="">
+          <div class="card-info">
+            <h3>03</h3>
+            <h5>Tune the Dawn</h5>
+          </div>
+        </div>
+
+        <div class="motocard">
+          <img src="rides-new.avif" alt="">
+          <div class="card-info">
+            <h3>04</h3>
+            <h5>Classic Spirit</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video section (kept same) -->
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <video src="royal bg vid.mp4" autoplay muted loop></video>
+        <div class="video-overlay-text">
+          <h1>Old School Forever</h1>
+          <p>The Legend of Royal Enfield</p>
+          <button class="btn btn-warning">Explore Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="javascript.js"></script>
+</body>
+</html>
