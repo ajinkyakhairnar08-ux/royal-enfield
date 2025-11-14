@@ -1,0 +1,144 @@
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #000;
+    color: #fff;
+}
+
+.orange { color: #ff6600; }
+
+/* NAVBAR */
+.navbar {
+    display: flex; 
+    align-items: center;
+    padding: 25px 8%;
+    background: #000;
+    border-bottom: 1px solid #222;
+}
+
+.navbar img {
+  height: 50px;
+  width: 240px;
+  margin: auto;
+}
+
+.menu-btn {
+    font-size: 28px;
+    cursor: pointer;
+    color: #ff6600;
+}
+
+/* HERO SECTION */
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3% 5%;
+    gap: 40px;
+}
+
+.title {
+    font-size: 60px;
+    font-weight: 900;
+}
+
+.model {
+    font-size: 32px;
+    margin-top: 10px;
+}
+
+.bike-container img {
+  height: 450px;
+  width: auto;
+  filter: drop-shadow(0 0 20px #ff6600);
+}
+
+/* SLIDER NAV BUTTONS */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    background: #111;
+    color: #ff6600;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    opacity: 0.8;
+    transition: 0.3s;
+    border-radius: 8px;
+}
+.nav-btn:hover {
+    background: #ff6600;
+    color: #000;
+}
+
+.left { left: 2%; }
+.right { right: 2%; }
+
+/* BOOK BUTTON */
+.book-section {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.book-btn {
+    background: #ff6600;
+    color: #000;
+    padding: 15px 40px;
+    border: none;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+.book-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* FOOTER */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 10%;
+    background: #111;
+}
+
+.footer .box {
+    width: 30%;
+}
+
+.footer h4 {
+    color: #ff6600;
+}
+
+/* ANIMATIONS */
+.fade-in { animation: fade 1s ease; }
+.slide-in { animation: slide 0.8s ease; }
+.zoom-in { animation: zoom 1s ease; }
+
+@keyframes fade { from {opacity:0;} to {opacity:1;} }
+@keyframes slide { from {transform:translateX(-40px); opacity:0;} to {transform:translateX(0); opacity:1;} }
+@keyframes zoom { from {transform:scale(0.8); opacity:0;} to {transform:scale(1); opacity:1;} }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+    .bike-container img {
+        width: 100%;
+        height: auto;
+    }
+    .nav-btn {
+        top: 90%;
+    }
+}
