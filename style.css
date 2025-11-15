@@ -14,7 +14,10 @@ body {
   height: 40px;
   width: auto;
 }
+
 .nav-link {
+  display: flex;
+  justify-content: space-between;
   color: #fff !important;
   transition: color 0.25s ease;
 }
